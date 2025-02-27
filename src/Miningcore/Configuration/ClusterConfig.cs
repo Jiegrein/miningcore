@@ -1182,6 +1182,12 @@ public partial class PoolConfig
     public IDictionary<string, object> Extra { get; set; }
 }
 
+public partial class CoinMarketCapApi
+{
+    public bool Enabled { get; set; }
+    public string Key { get; set; }
+}
+
 public partial class ClusterConfig
 {
     /// <summary>
@@ -1232,4 +1238,6 @@ public partial class ClusterConfig
 
     [Required]
     public PoolConfig[] Pools { get; set; }
+
+    public CoinMarketCapApi CoinMarketCapApi { get; set; }
 }

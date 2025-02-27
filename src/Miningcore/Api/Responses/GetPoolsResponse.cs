@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Miningcore.Api.Requests;
 using Miningcore.Blockchain;
 using Miningcore.Configuration;
 using Miningcore.Mining;
@@ -57,6 +58,7 @@ public partial class PoolInfo
     public string Id { get; set; }
 
     public ApiCoinConfig Coin { get; set; }
+    public object CoinMarketCapData { get; set; }
     public Dictionary<int, PoolEndpoint> Ports { get; set; }
     public ApiPoolPaymentProcessingConfig PaymentProcessing { get; set; }
     public PoolShareBasedBanningConfig ShareBasedBanning { get; set; }
