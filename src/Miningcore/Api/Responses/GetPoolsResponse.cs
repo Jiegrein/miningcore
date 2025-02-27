@@ -39,6 +39,17 @@ public class ApiCoinConfig
 
     [System.Text.Json.Serialization.JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string CanonicalName { get; set; }
+
+    [System.Text.Json.Serialization.JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public object Price { get; set; }
+
+    [System.Text.Json.Serialization.JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string Logo { get; set; }
+
+    [System.Text.Json.Serialization.JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonPropertyName("volume_change_24h")]
+    [Newtonsoft.Json.JsonProperty("volume_change_24h")]
+    public object VolumeChange24H { get; set; }
 }
 
 public class ApiPoolPaymentProcessingConfig
@@ -58,7 +69,6 @@ public partial class PoolInfo
     public string Id { get; set; }
 
     public ApiCoinConfig Coin { get; set; }
-    public object CoinMarketCapData { get; set; }
     public Dictionary<int, PoolEndpoint> Ports { get; set; }
     public ApiPoolPaymentProcessingConfig PaymentProcessing { get; set; }
     public PoolShareBasedBanningConfig ShareBasedBanning { get; set; }

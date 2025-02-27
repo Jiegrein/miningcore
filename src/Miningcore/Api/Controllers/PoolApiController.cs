@@ -114,9 +114,17 @@ public class PoolApiController : ApiControllerBase
                         {
                             var marketData = marketCapData.Where(Q => string.Equals(item.Coin.Symbol, Q.Symbol, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
                             if(marketData?.Quote != null && marketData.Quote.TryGetValue("USD", out var quote) && quote?.Price != null && quote.Price.HasValue)
-                                item.CoinMarketCapData = marketData;
+                            {
+                                item.Coin.Price = Math.Round(quote.Price.Value, 4);
+                                item.Coin.Logo = marketData.Logo;
+                                item.Coin.VolumeChange24H = quote.VolumeChange24H.HasValue ? Math.Round(quote.VolumeChange24H.Value, 4) : "n/a";
+                            }
                             else
-                                item.CoinMarketCapData = "n/a";
+                            {
+                                item.Coin.Price = "n/a";
+                                item.Coin.Logo = "n/a";
+                                item.Coin.VolumeChange24H = "n/a";
+                            }
                         }
                     }
                 }
